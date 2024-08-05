@@ -9,12 +9,12 @@ class Character {
 
     // Método para subir de nivel
     levelUp() {
-        this.level += 1;
+       return this.level += 1;
     }
 
     // Método para recibir daño
     receiveDamage(damage) {
-        this.hitPoints -= damage;
+        return this.hitPoints -= damage;
     }
 
     // Método para verificar si el personaje está vivo
@@ -27,18 +27,36 @@ class Character {
 class Warrior extends Character {
     constructor(name, attackPower, intelligence, hitPoints) {
         // Sumar +1 a los puntos de vida antes de llamar al constructor de la clase base
+        attackPower += 1;
         super(name, attackPower, intelligence, hitPoints + 1);
+        this.name = name;
+        this.attackPower = attackPower;
+        this.intelligence = intelligence;
+        this.hitPoints = hitPoints;
     }
 
     // Método exclusivo para el guerrero: strongAttack
     strongAttack() {
         // COMPLETAR
+      return this.attackPower*2;
     }
 }
 
 // Definición de la subclase Healer
 class Healer extends Character {
    // COMPLETAR : constructor y método heal
+   constructor(name, attackPower, intelligence, hitPoints) {
+    intelligence += 1;
+    super(name, attackPower, intelligence, hitPoints);
+    this.name = name;
+    this.attackPower = attackPower;
+    this.intelligence = intelligence;
+    this.hitPoints = hitPoints;
+
+}
+    heal() {
+       return this.intelligence*2;
+    }
 }
 
 // Creación de un guerrero y un curandero
