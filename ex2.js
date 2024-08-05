@@ -9,17 +9,17 @@ class Character {
 
     // Método para subir de nivel
     levelUp() {
-       return this.level += 1;
+       this.level += 1;
     }
 
     // Método para recibir daño
     receiveDamage(damage) {
-        return this.hitPoints -= damage;
+        this.hitPoints -= damage;
     }
 
     // Método para verificar si el personaje está vivo
     isAlive() {
-        return this.hitPoints > 0;
+        this.hitPoints > 0;
     }
 }
 
@@ -27,7 +27,6 @@ class Character {
 class Warrior extends Character {
     constructor(name, attackPower, intelligence, hitPoints) {
         // Sumar +1 a los puntos de vida antes de llamar al constructor de la clase base
-        attackPower += 1;
         super(name, attackPower, intelligence, hitPoints + 1);
         this.name = name;
         this.attackPower = attackPower;
@@ -38,7 +37,8 @@ class Warrior extends Character {
     // Método exclusivo para el guerrero: strongAttack
     strongAttack() {
         // COMPLETAR
-      return this.attackPower*2;
+        const damage = Math.floor(Math.random() * this.attackPower) * 2;
+      return damage;
     }
 }
 
@@ -46,8 +46,7 @@ class Warrior extends Character {
 class Healer extends Character {
    // COMPLETAR : constructor y método heal
    constructor(name, attackPower, intelligence, hitPoints) {
-    intelligence += 1;
-    super(name, attackPower, intelligence, hitPoints);
+    super(name, attackPower, intelligence+1, hitPoints);
     this.name = name;
     this.attackPower = attackPower;
     this.intelligence = intelligence;
@@ -55,7 +54,8 @@ class Healer extends Character {
 
 }
     heal() {
-       return this.intelligence*2;
+        const healing = Math.floor(Math.random() * this.intelligence) * 2;
+        return healing;
     }
 }
 
